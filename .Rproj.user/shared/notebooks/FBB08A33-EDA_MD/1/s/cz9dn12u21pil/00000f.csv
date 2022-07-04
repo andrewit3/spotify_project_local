@@ -1,0 +1,10 @@
+"0","df10 %>%
+  select(where(is.numeric)) %>%
+  gather() %>% 
+  ggplot(aes(value)) + 
+  geom_histogram(aes(y=..count../sum(..count..)),fill = SpotifyGreen) + 
+  ylab(""Relative Frequency"") +
+  facet_wrap(~key, scales = 'free',labeller = as_labeller(numeric_labels)) 
+"
+"2","`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+"

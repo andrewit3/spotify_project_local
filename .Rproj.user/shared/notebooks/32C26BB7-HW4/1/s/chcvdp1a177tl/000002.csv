@@ -1,0 +1,4 @@
+"0","dfLong <- df %>% "
+"0","  pivot_longer(names_to = ""litterSize"","
+"0","               cols = `Small Litter Size`:`Large Litter Size`"
+"0","               ,values_to = ""brainSize"" )"

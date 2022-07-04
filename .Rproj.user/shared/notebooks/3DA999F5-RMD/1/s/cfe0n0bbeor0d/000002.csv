@@ -1,0 +1,5 @@
+"0","P7 %>% "
+"0","  gather() %>% "
+"0","  ggplot(aes(x = key,y = value)) +"
+"0","  geom_boxplot() +"
+"0","  geom_jitter()"

@@ -1,0 +1,8 @@
+"0","trainingIndex = createDataPartition(Y, p = 0.5, list = FALSE)"
+"0",""
+"0","Xdf = data.frame(X)"
+"0",""
+"0","Xtrain = Xdf[trainingIndex,]"
+"0","Xtest  = Xdf[-trainingIndex,]"
+"0","Ytrain = Y[trainingIndex]"
+"0","Ytest  = Y[-trainingIndex]"

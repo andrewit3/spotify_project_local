@@ -1,0 +1,3 @@
+"0","BC <- (boxcox(P5,objective.name = ""Log-Likelihood"",optimize = T))"
+"0","BCP5 <- ((P5 ^ BC$lambda) - 1) / BC$lambda"
+"0","plot(BCP5,log(P5),abline(lm(log(P5) ~ BCP5)))"

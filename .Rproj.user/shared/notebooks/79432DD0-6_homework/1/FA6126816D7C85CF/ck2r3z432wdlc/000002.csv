@@ -1,0 +1,6 @@
+"0","train = spam$train"
+"0","test  = !train"
+"0","X     = spam$XdataF[train,]"
+"0","X_0   = spam$XdataF[test,]"
+"0","Y     = factor(spam$Y[train])"
+"0","Y_0   = factor(spam$Y[test])"

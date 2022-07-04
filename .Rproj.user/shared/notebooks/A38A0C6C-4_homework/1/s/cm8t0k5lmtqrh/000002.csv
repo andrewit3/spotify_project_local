@@ -1,0 +1,6 @@
+"0","cvF = function(k ,folds){"
+"0","  validIndex  = which(folds == k)"
+"0","  betaHatNok  = coef(lm(Y~X,subset=-validIndex))"
+"0","  YhatValid   = betaHatNok[1] + X[validIndex,] %*% betaHatNok[-1]"
+"0","  return(mean((YhatValid - Y[validIndex,])^2))"
+"0","}"

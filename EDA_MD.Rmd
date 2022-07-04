@@ -1,0 +1,183 @@
+---
+title: "Spotify Project Markdown"
+author: "Andrew Gregory"
+date: '2022-06-29'
+output: pdf_document
+---
+
+```{r}
+library("tidyverse")
+library("ggExtra")
+library("ggthemes")
+library("ggpubr")
+library("magrittr")
+library("ggcorrplot")
+library(ggExtra)
+```
+
+
+
+Data loading
+```{r}
+# Load data for the 2010's
+df10 <- read_csv(file = "Project_Data/dataset-of-10s.csv")
+```
+Feature Engineering
+```{r}
+# Change to seconds for the sake of interpretability
+df10 %<>%
+  mutate(duration_s = duration_ms / 1000)
+# Change these columns to factors
+df10 %<>%
+  mutate(across(c(mode, key, time_signature), ~ factor(.x)))
+# List factor column
+df10 %>%
+  select(where(is.factor))
+# Delete uninformative columns
+df10 %<>%
+  select(-track, -artist, -uri, -target, -duration_ms)
+```
+Define Spotify green for the sake of plotting
+```{r}
+spotify_green <- "#1DB954"
+```
+
+
+Numeric plots
+```{r}
+numeric_labels <- c(
+  `sections` = "Sections in Song", `chorus_hit` = "Time Until Chorus Hit",
+  `duration_s` = "Song Duration", `tempo` = "Tempo",
+  `valence` = "Valence", `liveness` = "Liveness", `instrumentalness` = "Instrumentalness",
+  `acousticness` = "Acousticness", `speechiness` = "Speechiness", `loudness` = "Loudness",
+  `energy` = "Energy", `danceability` = "Danceability"
+)
+df10 %>%
+  select(where(is.numeric)) %>%
+  gather() %>%
+  ggplot(aes(value)) +
+  geom_histogram(fill = spotify_green) +
+  ylab("Frequency") +
+  xlab("Feature Value") +
+  theme_tufte() +
+  facet_wrap(~key, scales = "free", labeller = as_labeller(numeric_labels))
+```
+
+
+Discrete plots
+```{r}
+factorLabels <- c(`mode` = "Mode", `key` = "Key", `time_signature` = "Time Signature")
+# To do: Figure out why time_signature is considered a different data type
+# df10 %>%
+#   select(mode, key, time_signature) %>%
+#   gather() %>%
+#   ggplot(aes(value)) +
+#   geom_bar(fill = SpotifyGreen) +
+#   facet_wrap(~key, scales = 'free')
+# par(mfrow = c(3,1))
+modeP <- df10 %>%
+  ggplot(aes(x = mode)) +
+  geom_bar(fill = spotify_green) +
+  theme_tufte() +
+  xlab("Mode") +
+  ylab("Count")
+keyP <- df10 %>%
+  count(key) %>%
+  ggplot(aes(x = fct_reorder(key, n), y = n)) +
+  geom_col(fill = spotify_green) +
+  theme_tufte() +
+  ylab("Count") +
+  xlab("Key")
+tsP <- df10 %>%
+  count(time_signature) %>%
+  ggplot(aes(x = fct_reorder(time_signature, n), y = n)) +
+  geom_col(fill = spotify_green) +
+  theme_tufte() +
+  ylab("Count") +
+  xlab("Time Signature")
+ggarrange(modeP, tsP, keyP,
+  ncol = 2, nrow = 2, align = "hv",
+  widths = c(2, 1), heights = c(1, 2),
+  common.legend = TRUE
+)
+```
+
+
+
+Relationships between two variables
+```{r}
+df10 %>%
+  select(where(is.numeric)) %>%
+  cor(method = "spearman") %>%
+  ggcorrplot(colors = c("Black", "Grey", SpotifyGreen)) +
+  scale_x_discrete(labels = c(
+    "Sections in Song", "Time Until Chorus Hit", "Duration of Song in Seconds", "Tempo",
+    "Valence", "Liveness", "Instrumentalness", "Acousticness", "Speechiness", "Loudness",
+    "Energy", "Danceability"
+  )) +
+  scale_y_discrete(labels = c(
+    "Sections in Song", "Time Until Chorus Hit", "Duration of Song in Seconds", "Tempo",
+    "Valence", "Liveness", "Instrumentalness", "Acousticness", "Speechiness", "Loudness",
+    "Energy", "Danceability"
+  ))
+```
+
+Looks like danceability and Energy have some interesting correlation
+
+```{r}
+(df10 %>%
+  ggplot(aes(danceability, energy)) +
+  geom_point(color = spotify_green) +
+  geom_smooth(method = "lm", color = "black") +
+  theme_tufte()) %>%
+  ggMarginal(type = "hist")
+```
+
+Chorus hit and Valence it looks like
+```{r}
+
+(df10 %>%
+  ggplot(aes(log(chorus_hit + 1), valence)) +
+  geom_point(color = SpotifyGreen, size = .2) +
+  geom_smooth(color = "black", method = "lm") +
+  xlab("Log Time Until Chorus Hit in Seconds") +
+  ylab("Valence") +
+  theme_tufte()) %>%
+  ggMarginal(type = "hist")
+```
+Looks like that high correlation was a result of some high leverage outliers.
+
+Time until chorus and duration of song
+```{r}
+(df10 %>%
+  ggplot(aes(log(chorus_hit + 1), log(duration_s))) +
+  geom_point(color = SpotifyGreen, size = .2) +
+  geom_smooth(color = "black") +
+  xlab("Log Time Until Chorus Hit in Seconds") +
+  ylab("Log Duration of Time in Seconds") +
+  theme_tufte()) %>%
+  ggMarginal(type = "histogram")
+```
+
+Liveness and Acoustiness
+```{r}
+(df10 %>%
+  ggplot(aes(log(liveness + 1), log(acousticness + 1))) +
+  geom_point(color = spotify_green) +
+  geom_smooth(color = "black") +
+  xlab("Liveness") +
+  ylab("Acousticness") +
+  theme_tufte()
+) %>%
+  ggMarginal(type = "hist")
+```
+
+
+
+
+
+
+
+
+
+

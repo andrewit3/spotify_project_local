@@ -1,0 +1,4 @@
+"0","sumForward      = summary(outForward)"
+"0","Sforward       = sumForward$which[which.min(sumForward$cp),][-1]"
+"0","lmForward      = lm(formula = Y ~ X[,Sforward])"
+"0","betaHatForward = coef(lmForward)"

@@ -1,0 +1,7 @@
+"0","packages = c('biglm','foreach','doParallel','leaps','caret','knitr','latticeExtra')"
+"0","for(package in packages){"
+"0","  if(!require(package,character.only=TRUE,quietly=TRUE)){"
+"0","    install.packages(package,repos='http://cran.us.r-project.org')"
+"0","    require(package,character.only=TRUE,quietly=TRUE)"
+"0","  }"
+"0","}"

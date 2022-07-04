@@ -1,0 +1,7 @@
+"0","P7 %>% 
+  ggplot(aes(x = Lab1,y = Lab2)) +
+  geom_point() +
+  geom_smooth()
+"
+"2","`geom_smooth()` using method = 'loess' and formula 'y ~ x'
+"

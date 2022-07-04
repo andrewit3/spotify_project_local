@@ -1,0 +1,5 @@
+"0","sim_vec <- vector(length = 10000)"
+"0","for ( i in 1:10000){"
+"0","  sim_vec[i] <- mean(rexp(25,rate = 1/5))"
+"0","}"
+"0","qqnorm(sim_vec)"

@@ -1,0 +1,14 @@
+"0","(df10 %>% 
+   ggplot(aes(log(liveness + 1), log(acousticness + 1))) +
+   geom_point(color = spotify_green) +
+   geom_smooth(color = ""black"") +
+   xlab(""Liveness"") +
+   ylab(""Acousticness"") +
+   theme_tufte()
+  )  %>% 
+  ggMarginal(type = ""hist"")
+"
+"2","`geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = ""cs"")'
+"
+"2","`geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = ""cs"")'
+"

@@ -1,0 +1,13 @@
+"0","(df10 %>%
+  ggplot(aes(log(chorus_hit + 1), log(duration_s))) +
+  geom_point(color = SpotifyGreen, size = .2) +
+  geom_smooth(color = ""black"") +
+  xlab(""Log Time Until Chorus Hit in Seconds"") +
+  ylab(""Log Duration of Time in Seconds"") + 
+  theme_tufte()) %>% 
+ggMarginal(type = ""histogram"")
+"
+"2","`geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = ""cs"")'
+"
+"2","`geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = ""cs"")'
+"

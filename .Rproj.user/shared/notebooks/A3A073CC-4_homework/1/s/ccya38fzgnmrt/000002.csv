@@ -1,0 +1,12 @@
+"0","require(leaps)"
+"0","outForward      = regsubsets(X,Y,method = ""forward"")"
+"2","Warning in leaps.setup(x, y, wt = weights, nbest = nbest, nvmax = nvmax,  :"
+"2","
+ "
+"2"," 12  linear dependencies found
+"
+"1","Reordering variables and trying again:
+"
+"0","sumForward      = summary(outForward)"
+"0","modelForward    = sumForward$which[which.min(sumForward$bic),]"
+"0","Sforward        = modelForward[-1]"

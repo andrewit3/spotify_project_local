@@ -1,0 +1,3 @@
+"0","####"
+"0","betaHatRefitted = coef(lm(formula = Y ~ X,"
+"0","                    subset = Srefitted))"

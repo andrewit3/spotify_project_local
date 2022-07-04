@@ -1,0 +1,8 @@
+"0","write.table(X[1:1000,],file='Xchunk1.txt',sep=',',row.names=F,col.names=names(Xdf))"
+"0","write.table(X[1001:2000,],file='Xchunk2.txt',sep=',',row.names=F,col.names=names(Xdf))"
+"0","write.table(X[2001:3000,],file='Xchunk3.txt',sep=',',row.names=F,col.names=names(Xdf))"
+"0","write.table(X[3001:4000,],file='Xchunk4.txt',sep=',',row.names=F,col.names=names(Xdf))"
+"0","write.table(Y[1:1000],file='Ychunk1.txt',sep=',',row.names=F,col.names=F)"
+"0","write.table(Y[1001:2000],file='Ychunk2.txt',sep=',',row.names=F,col.names=F)"
+"0","write.table(Y[2001:3000],file='Ychunk3.txt',sep=',',row.names=F,col.names=F)"
+"0","write.table(Y[3001:4000],file='Ychunk4.txt',sep=',',row.names=F,col.names=F)"

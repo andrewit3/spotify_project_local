@@ -1,0 +1,30 @@
+"0","library(""tidyverse"")"
+"0","library(""MASS"")"
+"0","library(""magrittr"")"
+"2","
+Attaching package: ‘magrittr’
+
+"
+"2","The following object is masked from ‘package:purrr’:
+
+    set_names
+
+"
+"2","The following object is masked from ‘package:tidyr’:
+
+    extract
+
+"
+"0","library(""survival"")"
+"2","Warning:"
+"2"," package ‘survival’ was built under R version 4.1.1
+"
+"0","df <- read_csv(""~/R Scripts/STAT641/Assignment3/Assign3_BrainSize.csv"")"
+"1","
+[36m--[39m [1m[1mColumn specification[1m[22m [36m-------------------[39m
+cols(
+  `Small Litter Size` = [32mcol_double()[39m,
+  `Large Litter Size` = [32mcol_double()[39m
+)
+
+"

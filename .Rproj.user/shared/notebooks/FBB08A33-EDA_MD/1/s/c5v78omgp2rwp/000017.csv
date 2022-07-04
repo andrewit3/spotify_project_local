@@ -1,0 +1,13 @@
+"0","(df10 %>%
+  ggplot(aes(log(chorus_hit + 1), valence)) +
+  geom_point(color = SpotifyGreen, size = .2) +
+  geom_smooth(color = ""black"", method = ""lm"") +
+  xlab(""Log Time Until Chorus Hit in Seconds"") +
+  ylab(""Valence"") + 
+  theme_tufte()) %>% 
+  ggMarginal(type = ""hist"")
+"
+"2","`geom_smooth()` using formula 'y ~ x'
+"
+"2","`geom_smooth()` using formula 'y ~ x'
+"

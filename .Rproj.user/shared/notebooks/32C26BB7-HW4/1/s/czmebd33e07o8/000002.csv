@@ -1,0 +1,3 @@
+"0","dfLong %>% "
+"0","  group_by(litterSize) %>% "
+"0","  summarise(medianSize = median(brainSize,na.rm = T),madSize = mad(brainSize,na.rm = T))"

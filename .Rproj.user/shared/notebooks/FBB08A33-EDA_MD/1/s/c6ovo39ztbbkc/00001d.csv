@@ -1,0 +1,11 @@
+"0","(df10 %>%
+  ggplot(aes(danceability,energy)) +
+  geom_point(color = spotify_green) +
+  geom_smooth(method = ""lm"", color = ""black"") +
+  theme_tufte()) %>% 
+  ggMarginal(type = ""hist"")
+"
+"2","`geom_smooth()` using formula 'y ~ x'
+"
+"2","`geom_smooth()` using formula 'y ~ x'
+"

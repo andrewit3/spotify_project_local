@@ -1,0 +1,3 @@
+"0","dfLong %>% "
+"0","  group_by(litterSize) %>% "
+"0","  summarise(meanSize = mean(brainSize,na.rm = T),SDSize = sd(brainSize,na.rm = T))"

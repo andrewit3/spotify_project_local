@@ -1,0 +1,100 @@
+"0","Bgrid = c(50,100,200,250,375,500,600,700,800,1000)"
+"0","boostTrain = vector(length = 10)"
+"0","bagTrain = vector(length = 10)"
+"0","boostTest = vector(length = 10)"
+"0","bagTraining = vector(length = 10)"
+"0",""
+"0","for(i in 1:length(Bgrid)){"
+"0","  boostOut = gbm(Ychar~.,data=X,"
+"0","              n.trees= Bgrid[i], interaction.depth= 5,"
+"0","              shrinkage= .1, distribution = 'adaboost')"
+"0","  bagOut = randomForest(x =  X,y = Y,ntree = Bgrid[i])"
+"0","  boostTrain[i] =  sum(ifelse(boostOut$fit > 0,""1"",""0"") != Ychar)"
+"0","  bagTrain[i]      = sum(bagOut$predicted != Y)"
+"0","  boostTest[i] = sum( ifelse(predict(boostOut,newdata = X_0) > 0,""1"",""0"") != Ychar_0)"
+"0","  bagTest[i]  = sum( predict(bagOut,newdata = X_0) != Y_0)"
+"0","}"
+"2","Using 50 trees...
+
+"
+"2","Using 100 trees...
+
+"
+"2","Using 200 trees...
+
+"
+"2","Using 250 trees...
+
+"
+"2","Using 375 trees...
+
+"
+"2","Using 500 trees...
+
+"
+"2","Using 600 trees...
+
+"
+"2","Using 700 trees...
+
+"
+"2","Using 800 trees...
+
+"
+"2","Using 1000 trees...
+
+"
+"0","boostTrain ; bagTrain"
+"1"," [1]"
+"1"," 245"
+"1"," 203"
+"1"," 151"
+"1"," 137"
+"1","  99"
+"1","  68"
+"1","  56"
+"1","  38"
+"1","  24"
+"1","  11"
+"1","
+"
+"1"," [1]"
+"1"," 209"
+"1"," 207"
+"1"," 201"
+"1"," 196"
+"1"," 203"
+"1"," 204"
+"1"," 210"
+"1"," 202"
+"1"," 203"
+"1"," 200"
+"1","
+"
+"0","boostTest  ; bagTest"
+"1"," [1]"
+"1"," 12"
+"1","  9"
+"1","  7"
+"1","  7"
+"1","  7"
+"1","  6"
+"1","  7"
+"1","  7"
+"1","  6"
+"1","  6"
+"1","
+"
+"1"," [1]"
+"1","  9"
+"1"," 12"
+"1"," 11"
+"1"," 11"
+"1"," 10"
+"1"," 12"
+"1"," 10"
+"1"," 11"
+"1"," 11"
+"1"," 12"
+"1","
+"

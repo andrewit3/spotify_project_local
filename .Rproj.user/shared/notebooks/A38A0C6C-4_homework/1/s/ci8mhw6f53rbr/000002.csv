@@ -1,0 +1,6 @@
+"0","K          = 10"
+"0","trControl  = trainControl(method = 'cv', number = K)"
+"0","tuneLength = 50"
+"0","lmOut      = train(x = Xtrain, y = Ytrain,  "
+"0","                  method = ""leapForward"", tuneLength = tuneLength,"
+"0","                  trControl = trControl)"

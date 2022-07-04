@@ -1,0 +1,18 @@
+"0","df10 %>%
+  select(where(is.numeric)) %>%
+  cor(method = ""spearman"") %>%
+  ggcorrplot(colors = c(""Black"", ""Grey"", SpotifyGreen)) +
+  scale_x_discrete(labels = c(
+    ""Sections in Song"", ""Time Until Chorus Hit"", ""Duration of Song in Seconds"", ""Tempo"",
+    ""Valence"", ""Liveness"", ""Instrumentalness"", ""Acousticness"", ""Speechiness"", ""Loudness"",
+    ""Energy"", ""Danceability""
+  )) +
+  scale_y_discrete(labels = c(
+    ""Sections in Song"", ""Time Until Chorus Hit"", ""Duration of Song in Seconds"", ""Tempo"",
+    ""Valence"", ""Liveness"", ""Instrumentalness"", ""Acousticness"", ""Speechiness"", ""Loudness"",
+    ""Energy"", ""Danceability""
+  ))
+"
+"2","Error in df10 %>% select(where(is.numeric)) %>% cor(method = ""spearman"") %>%  : 
+  could not find function ""%>%""
+"
